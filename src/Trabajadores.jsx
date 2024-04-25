@@ -44,20 +44,21 @@ const Trabajadores = ({ actualizaTrabajadores }) => {
   // En el boton, le damos función onClick. S ise hace, llama a borrar con ese id.
   return (
     <div>
-      {trabajadores.map(trabajador => (
-        <article className="person" key={trabajador.id}>
-          <img src={`https://randomuser.me/api/portraits/men/${trabajador.id}.jpg`} alt="" />
+      {trabajadores.map(({ id, name, email, phone }) => (
+        <article className="person" key={id}>
+          <img src={`https://randomuser.me/api/portraits/men/${id}.jpg`} alt="" />
           <div>
-            <h4>{trabajador.name}</h4>
-            <p>{trabajador.email}</p>
-            <p>{trabajador.phone}</p>
+            <h4>{name}</h4>
+            <p>{email}</p>
+            <p>{phone}</p>
           </div>
-          <button type='button' className='delete-btn' onClick={() => borraTrabajador(trabajador.id)}>
+          <button type='button' className='delete-btn' onClick={() => borraTrabajador(id)}>
             <img src='./src/trash.png' alt="Delete" />
           </button>
         </article>
       ))}
     </div>
+
   );
 };
 
